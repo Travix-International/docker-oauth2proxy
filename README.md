@@ -4,16 +4,17 @@
 [![Pulls](https://img.shields.io/docker/pulls/travix/oauth2proxy.svg)](https://hub.docker.com/r/travix/oauth2proxy/)
 [![License](https://img.shields.io/github/license/Travix-International/docker-oauth2proxy.svg)](https://github.com/Travix-International/docker-oauth2proxy/blob/master/LICENSE)
 
-> Docker implementation of [oauth2Proxy](https://github.com/bitly/oauth2_proxy)
+> Docker implementation of [oauth2_proxy](https://github.com/bitly/oauth2_proxy)
 
 
 ## Environment variables
 
-To setup authentication using
+You can setup authentication against a list of username/password, these are created when the container is started.
 
-| Name                 | Description                                               | Default value               |
+| Name                 | Description                                               | Example value               |
 | -------------------- | ----------------------------------------------------------| --------------------------- |
-| OAUTH2_PROXY_AUTH    | Space separated list of user:password                     |
+| OAUTH2_PROXY_AUTH    | Space separated list of user:password                     | user1:pass1 user2:pass2
+
 
 ## Usage
 
