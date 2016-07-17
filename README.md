@@ -22,8 +22,7 @@ You can setup authentication against a list of username/password, these are crea
 
 ```sh
 docker run -d \
-    -p 80:80 \
-    -p 443:443 \
+    -p 4180:4180 \
     travix/oauth2proxy:latest \
       -client-id=gcloud-client-id.apps.googleusercontent.com \
       -client-secret=gcloud-client-secret \
@@ -37,8 +36,7 @@ docker run -d \
 
 ```sh
 docker run -d \
-    -p 80:80 \
-    -p 443:443 \
+    -p 4180:4180 \
     -e "OAUTH2_PROXY_AUTH=user1:pass1 user2:pass2 user3:pass3" \
     travix/oauth2proxy:latest \
       -htpasswd-file=/etc/oauth2proxy-auth \
