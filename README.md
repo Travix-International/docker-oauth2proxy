@@ -26,7 +26,7 @@ docker run -d \
     travix/oauth2proxy:latest \
       -client-id=gcloud-client-id.apps.googleusercontent.com \
       -client-secret=gcloud-client-secret \
-      -cookie-secret=$(openssl rand -base64 32) \
+      -cookie-secret=$(head -c 16 /dev/urandom | md5sum | head -c 32) \
       -upstream=https://backend-server:8081 \
       -email-domain=mydomain.com
 ```
@@ -40,7 +40,7 @@ docker run -d \
     -e "OAUTH2_PROXY_AUTH=user1:pass1 user2:pass2 user3:pass3" \
     travix/oauth2proxy:latest \
       -htpasswd-file=/etc/oauth2proxy-auth \
-      -cookie-secret=$(openssl rand -base64 32) \
+      -cookie-secret=$(head -c 16 /dev/urandom | md5sum | head -c 32) \
       -tls-cert=/etc/ssl/private/tls.crt \
       -tls-key=/etc/ssl/private/tls.key \
       -upstream=https://backend-server:8081
