@@ -15,4 +15,4 @@ then
   done
 fi
 
-oauth2_proxy "$@"
+oauth2_proxy -http-address :80 -https-address :443 "$@"

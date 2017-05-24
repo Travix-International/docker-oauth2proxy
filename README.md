@@ -35,17 +35,24 @@ docker run -d \
 ### Authenticate against a given user/password list
 
 ```sh
+# run backend
 docker run -d \
-    -p 4180:4180 \
+    --name backend-server \
+    nginx:alpine
+
+# run auth2proxy with user/pass and fake google credentials
+docker run -d \
+    -p 8080:80 \
     -e "OAUTH2_PROXY_AUTH=user1:pass1 user2:pass2 user3:pass3" \
+    --link backend-server \
     travix/oauth2proxy:latest \
+      -client-id=gcloud-client-id.apps.googleusercontent.com \
+      -client-secret=gcloud-client-secret \
       -htpasswd-file=/etc/oauth2proxy-auth \
       -cookie-secret=$(head -c 16 /dev/urandom | md5sum | head -c 32) \
-      -tls-cert=/etc/ssl/private/tls.crt \
-      -tls-key=/etc/ssl/private/tls.key \
-      -upstream=https://backend-server:8081
+      -upstream=http://backend-server
 
-curl -u user1:pass1 http://localhost
+curl -u user1:pass1 http://localhost:8080
 ```
 
 
