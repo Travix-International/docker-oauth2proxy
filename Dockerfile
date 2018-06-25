@@ -19,6 +19,3 @@ RUN apk --update add curl apache2-utils ca-certificates \
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-
-# default oauth2proxy ports
-EXPOSE 80 443
